@@ -6,9 +6,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def scatter_matrix(data_array, data_tags, 
+def scatter_matrix(data_array, data_tags
                    data_array_lo=None, data_array_hi=None, \
-                   data_array_ticks=None):
+                   data_array_ticks=None, \
+                   spts=2):
     """
     Plot Scatter Matrix.
     """
@@ -64,7 +65,7 @@ def scatter_matrix(data_array, data_tags,
                 yticks = data_array_ticks[irow]
             
             # Plot Data
-            ax.scatter(xdata, ydata, s=2**2, c='k', edgecolor='none')
+            ax.scatter(xdata, ydata, s=spts**2, c='k', edgecolor='none')
             
             # Plot Axis Label
             if icol == irow:
