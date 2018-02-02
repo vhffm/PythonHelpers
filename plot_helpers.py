@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 def scatter_matrix(data_array, data_tags, 
                    data_array_lo, data_array_hi, \
-                   data_array_ticks):
+                   data_array_ticks=None):
     """
     Plot Scatter Matrix.
     """
@@ -49,8 +49,9 @@ def scatter_matrix(data_array, data_tags,
             yhi = data_array_hi[irow]
             
             # Extract Ticks
-            xticks = data_array_ticks[icol+1]
-            yticks = data_array_ticks[irow]
+            if data_array_ticks:
+                xticks = data_array_ticks[icol+1]
+                yticks = data_array_ticks[irow]
             
             # Plot Data
             ax.scatter(xdata, ydata, s=2**2, c='k', edgecolor='none')
@@ -69,8 +70,9 @@ def scatter_matrix(data_array, data_tags,
             ax.set_ylim([ylo, yhi])
             
             # Set Axis Ticks
-            ax.set_xticks(xticks)
-            ax.set_yticks(yticks)
+            if data_array_ticks:
+                ax.set_xticks(xticks)
+                ax.set_yticks(yticks)
         
     # Tighten
     fig.subplots_adjust(hspace=0, wspace=0)
