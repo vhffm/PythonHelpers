@@ -3,10 +3,11 @@ Helper Functions for Plotting.
 """
 
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def scatter_matrix(data_array, data_tags, 
-                   data_array_lo, data_array_hi, \
+                   data_array_lo=None, data_array_hi=None, \
                    data_array_ticks=None):
     """
     Plot Scatter Matrix.
@@ -43,10 +44,19 @@ def scatter_matrix(data_array, data_tags,
             ylabel = data_tags[irow]
             
             # Extract Data Limits
-            xlo = data_array_lo[icol+1]
-            xhi = data_array_hi[icol+1]
-            ylo = data_array_lo[irow]
-            yhi = data_array_hi[irow]
+            if data_array_lo:
+                xlo = data_array_lo[icol+1]
+                ylo = data_array_lo[irow]
+            else:
+                xlo = np.nanmin(xdata)
+                ylo = np.nanmin(ydata)
+
+            if data_array_hi:
+                xhi = data_array_hi[icol+1]
+                yhi = data_array_hi[irow]
+            else:
+                xhi = np.nanmax(xdata)
+                yhi = np.nanmax(ydata)
             
             # Extract Ticks
             if data_array_ticks:
