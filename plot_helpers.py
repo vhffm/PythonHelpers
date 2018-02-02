@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def scatter_matrix(data_array, data_tags
+def scatter_matrix(data_array, data_tags, \
                    data_array_lo=None, data_array_hi=None, \
                    data_array_ticks=None, \
                    spts=2):
